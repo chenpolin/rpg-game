@@ -1,0 +1,20 @@
+# Dependency directories
+node_modules/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# RPG Maker MV/MZ specific excludes (optional, based on preference)
+# saves/
+# games/
