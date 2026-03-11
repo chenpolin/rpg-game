@@ -14,6 +14,12 @@
  * @type number
  * @default 88
  *
+ * @param resultVariable
+ * @text 結果變數 ID
+ * @desc 儲存傳送結果的變數 ID (1=成功, 0=失敗，預設為 81)
+ * @type number
+ * @default 81
+ *
  * @help
  * --- 如何使用 ---
  * 1. 在事件中選擇「插件指令...」。
@@ -29,6 +35,7 @@
     const parameters = PluginManager.parameters('CDY_SELogger');
     const backendUrl = String(parameters['backendUrl'] || '');
     const idVariable = parseInt(parameters['idVariable'] || 88);
+    const resultVariableId = parseInt(parameters['resultVariable'] || 81);
     const targetVariableId = 87; // 學生寫的內容存入變數 87 預設值
 
     const _Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
@@ -49,11 +56,11 @@
 
             const title = document.createElement('div');
             title.style.cssText = 'color:white;margin-bottom:15px;font-weight:bold;font-size:18px;';
-            title.innerText = "請輸入您的解釋：";
+            title.innerText = "請寫下您的想法";
 
             const inputElement = document.createElement('textarea');
             inputElement.style.cssText = 'width:100%;height:150px;padding:10px;font-size:16px;border-radius:5px;border:none;';
-            inputElement.placeholder = "請寫下您的想法...";
+            inputElement.placeholder = "請寫下您的想法...(最少50字)";
 
             const buttonElement = document.createElement('button');
             buttonElement.style.cssText = 'margin-top:20px;padding:10px 30px;font-size:18px;cursor:pointer;background:gold;color:black;border:none;border-radius:5px;font-weight:bold;';
@@ -85,6 +92,7 @@
             buttonElement.onclick = () => {
                 const inputText = inputElement.value;
                 if (!inputText.trim()) return alert("請輸入內容！");
+                if (inputText.length < 50) return alert("您的解釋太短了（目前 " + inputText.length + " 字），請輸入至少 50 個字。");
 
                 // 存入 RPG Maker 變數 87
                 $gameVariables.setValue(targetVariableId, inputText);
@@ -97,21 +105,54 @@
                     time: new Date().toLocaleString()
                 };
 
-                $gameMessage.add("正在記錄...");
+                // 初始設為 0 (失敗/處理中)
+                $gameVariables.setValue(resultVariableId, 0);
 
-                // 傳送到 Fly.io
-                fetch(backendUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(dataToSend),
-                })
-                .then(() => $gameMessage.add("記錄成功！"))
-                .catch(() => $gameMessage.add("遠端紀錄失敗，但已存在本地變數。"))
-                .finally(() => {
+                const maxRetries = 3;
+                let attempt = 1;
+
+                const sendWithRetry = () => {
+                    const retryMsg = attempt > 1 ? ` (正在第 ${attempt} 次重試...)` : "";
+                    $gameMessage.add("正在記錄..." + retryMsg);
+
+                    fetch(backendUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(dataToSend),
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                $gameVariables.setValue(resultVariableId, 1);
+                                alert("紀錄成功！");
+                                $gameMessage.add("記錄成功！");
+                                finishProcess();
+                            } else {
+                                throw new Error('Server responded with status ' + response.status);
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(`Logging error (Attempt ${attempt}):`, error);
+                            if (attempt < maxRetries) {
+                                attempt++;
+                                // 等待 1 秒後重試
+                                setTimeout(sendWithRetry, 1000);
+                            } else {
+                                alert("連線失敗！已嘗試 3 次均無法送達後端。請截圖輸入內容並聯繫老師。\n\n錯誤訊息：" + error.message);
+                                $gameVariables.setValue(resultVariableId, 0);
+                                $gameMessage.add("遠端紀錄失敗，但已存在本地變數。");
+                                finishProcess();
+                            }
+                        });
+                };
+
+                const finishProcess = () => {
                     document.body.removeChild(container);
                     document.body.removeChild(backdrop);
                     interpreter.setWaitMode('');
-                });
+                };
+
+                // 開始第一次傳送
+                sendWithRetry();
             };
         }
     };

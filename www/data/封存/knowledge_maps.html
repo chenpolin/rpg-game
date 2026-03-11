@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聽覺科學關卡知識概念圖</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'forest' });
+    </script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --accent-color: #27ae60;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Microsoft JhengHei";
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .mermaid {
+            width: 820px;
+            height: 625px;
+            margin: 20px auto;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        svg {
+            max-width: 100% !important;
+            max-height: 100% !important;
+        }
+
+        .knowledge-points {
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        .knowledge-points ul {
+            padding-left: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>聽覺科學關卡知識概念圖</h1>
+        <p>將教學重點轉化為命題式邏輯連結</p>
+    </header>
+
+    <div class="container">
+
+        <!-- 完整全景概念圖區域 -->
+        <section id="full-map">
+            <h2 style="color: var(--primary-color);">聽覺科學全景知識地圖 (L1-L7 完整整合)</h2>
+            <p>此圖表整合了從聲學空間傳遞到中耳濾波特性的完整邏輯。您可以根據 subgraph 區塊自行切割為七個部分。</p>
+
+            <div class="mermaid">
+                graph TD
+                %% 關卡 1-4: 空間聲學與 HRTF
+                subgraph L1_L4 ["一至四關：空間定位與 HRTF"]
+                A[聲源] -- 定義空間位置 --> B["方位角與仰角 (Azimuth/Elevation)"]
+                A -- 抵達聽者 --> D["HRTF (頭部相關轉換函數)"]
+                D -- 包含物理影響 --> D1[頭部/耳殼/軀幹]
+                D1 -- 頭部產生 --> E["頭影效應 (>1500Hz)"]
+                end
+
+                %% 關卡 2: 耳殼功能
+                subgraph L2 ["第二關：耳殼過濾"]
+                D1 -- 耳殼構造 --> F["物理濾波 (>4000Hz 立體定位)"]
+                F -- 強化 --> F1[垂直方向與單耳定位]
+                end
+
+                %% 關卡 3: 耳道共振
+                subgraph L3 ["第三關：耳道特性"]
+                F -- 進入 --> G["耳道 (2.3cm 管狀結構)"]
+                G -- 管狀共振 f=c/4L --> H["增益 (2500-3800Hz / 15dB)"]
+                H -- 阻尼效應 --> H1[共振峰變寬廣]
+                end
+
+                %% 關卡 5: 阻抗不匹配
+                subgraph L5 ["第五關：阻抗挑战"]
+                H -- 聲能傳遞至 --> I[耳膜]
+                I -- 遭遇介質差異 --> J["空氣(低阻) vs 內耳液(高阻)"]
+                J -- 導致 99.9% 反射 --> K["損失 35-40dB 能量"]
+                end
+
+                %% 關卡 6: 中耳增壓機制
+                subgraph L6 ["第六關：中耳增壓引擎"]
+                I -- 機制 1: 面積比 --> L1["17:1 增壓 (耳膜與鐙骨)"]
+                I -- 機制 2: 耳膜彎曲 --> L2["2:1 力量轉換"]
+                I -- 機制 3: 槓桿原理 --> L3["1.3:1 位移放大"]
+                L1 & L2 & L3 -- 總放大 44 倍 --> M[克服阻抗損失]
+                end
+
+                %% 關卡 7: 系統特性
+                subgraph L7 ["第七關：聽覺濾波總結"]
+                M -- 物理結構決定 --> N["帶通濾波特性 (Band-pass)"]
+                N -- 決定人耳最敏銳區 --> Q["最小可聽度曲線 (1000-1500Hz)"]
+                end
+
+                %% 跨區連動
+                E & F1 & H1 & K --> N
+            </div>
+        </section>
+
+        <hr style="margin: 50px 0;">
+        <h1 style="text-align: center;">單獨關卡細節內容（含縱向與橫向版本）</h1>
+
+        <!-- 關卡 1 -->
+        <section id="lv1">
+            <h2>關卡 1：迷霧森林（聲學路徑與方位角）</h2>
+            <h3>縱向版本 (TD)</h3>
+            <div class="mermaid">
+                graph TD
+                A[聲源] -- 經由路徑 --> B[耳朵]
+                A -- 受到反射與繞射 --> C[身體構造]
+                C -- 包含 --> D[頭部]
+                C -- 包含 --> E[耳殼]
+                C -- 包含 --> F[軀幹]
+                D -- 產生 --> G[頭影效應]
+                G -- 遮蔽 --> H[高頻聲音 > 1500Hz]
+                I[方位角 Azimuth] -- 描述 --> J[水平方向]
+                K[仰角 Elevation] -- 描述 --> L[垂直方向]
+            </div>
+            <h3>橫向版本 (LR)</h3>
+            <div class="mermaid">
+                graph LR
+                A[聲源位置] -- 由此定義 --> B[空間座標]
+                B -- 水平維度 --> I[方位角 Azimuth]
+                B -- 垂直維度 --> K[仰角 Elevation]
+                I -- 例如 --> I2[0度 正前方；90度 正右方]
+                K -- 例如 --> K2[0度 正前方；90度 正上方]
+                A -- 抵達聽者 --> C[身體構造]
+                C -- 頭部產生 --> G[頭影效應]
+                G -- 遮蔽 --> H[高頻聲音 > 1500Hz]
+            </div>
+        </section>
+
+        <!-- 外耳系統整合 -->
+        <section id="outer-ear-summary">
+            <h2>外耳系統整合（耳殼與耳道）</h2>
+            <h3>橫向版本 (LR)</h3>
+            <div class="mermaid">
+                graph LR
+                A[外部聲波] -- 抵達 --> B["耳殼<br/>(Pinna)"]
+                B -- 高頻濾波 --> C["耳道入口<br/>(Canal Entrance)"]
+                C -- 共振放大 --> D["耳膜<br/>(Tympanic Membrane)"]
+                
+                B -- 提供 --> B1["垂直與單耳定位"]
+                D -- 提供 --> D1["15dB 增益<br/>(2500-3800Hz)"]
+                
+                subgraph OuterEar [外耳傳遞系統]
+                B
+                C
+                D
+                end
+            </div>
+        </section>
+
+        <!-- 關卡 2 -->
+        <section id="lv2">
+            <h2>關卡 2：暗影洞穴（耳殼功能）</h2>
+            <h3>縱向版本 (TD)</h3>
+            <div class="mermaid">
+                graph TD
+                A[耳殼褶皺] -- 進行 --> B[高頻濾波 > 4000Hz]
+                B -- 協助 --> C[聲源定位]
+                C -- 特別是 --> D[垂直方向定位]
+                A -- 關鍵 --> E[單耳聆聽]
+                F[物理形狀] -- 影響 --> G[濾波特徵]
+            </div>
+            <h3>橫向版本 (LR)</h3>
+            <div class="mermaid">
+                graph LR
+                A[耳殼物理形狀] -- 產生 --> B[特定濾波特徵]
+                B -- 過濾 --> C[高頻聲音 > 4000Hz]
+                C -- 協助 --> D[垂直定位]
+                C -- 協助 --> E[單耳聆聽]
+            </div>
+        </section>
+
+        <!-- 關卡 3 -->
+        <section id="lv3">
+            <h2>關卡 3：共振長廊（耳道特性）</h2>
+            <h3>縱向版本 (TD)</h3>
+            <div class="mermaid">
+                graph TD
+                A[耳道] -- 結構 --> B[管狀結構]
+                B -- 產生 --> C[管狀共振]
+                C -- 遵循 --> D[f = c / 4L]
+                A -- 長度 2.3cm --> E[峰值 2.5k-3.8kHz]
+                C -- 提供 --> F[15dB 增益]
+            </div>
+            <h3>橫向版本 (LR)</h3>
+            <div class="mermaid">
+                graph LR
+                A[耳道] -- 結構 --> B["2.3公分的一端開放管狀 (Open-Closed)"]
+                B -- 連結 --> C[運算公式 f = c / 4L]
+                C -- 導向 --> D[增益 15dB / 2.5k-3.8kHz]
+
+                E[耳道壁] -- 柔軟吸附產生 --> F[阻尼]
+                F -- 使得 --> G[共振峰變寬廣]
+                G -- 進而影響 --> D
+            </div>
+        </section>
+
+        <!-- 關卡 4 -->
+        <section id="lv4">
+            <h2>關卡 4：赫茲的聲學工坊 (HRTF)</h2>
+            <h3>縱向版本 (TD)</h3>
+            <div class="mermaid">
+                graph TD
+                A[HRTF] -- 包含 --> C[頭部/耳殼/身體]
+                A -- 特性 --> D[方向依賴性]
+                E[位置改變] -- 導致 --> F[HRTF 變化]
+                G[遠耳] -- 能量衰減 --> I[頭影效應]
+            </div>
+            <h3>橫向版本 (LR)</h3>
+            <div class="mermaid">
+                graph LR
+                A[聲源位置] -- 抵達 --> B["物理構造過濾<br/>(頭/耳殼/軀幹)"]
+                B -- 產生 --> C["方向依賴性<br/>(頻率過濾)"]
+                C -- 定義為 --> D["HRTF<br/>(轉換函數)"]
+                D -- 最終導出 --> E[耳膜聲壓差異]
+            </div>
+        </section>
+
+        <!-- 關卡 5 -->
+        <section id="lv5">
+            <h2>關卡 5：阻抗祭壇（阻抗不匹配）</h2>
+            <h3>縱向版本 (TD)</h3>
+            <div class="mermaid">
+                graph TD
+                A[空氣] -- 低阻抗 --> B[耳蝸液體]
+                B -- 高阻抗 --> C[不匹配]
+                C -- 導致 --> D[99.9% 反射]
+                D -- 損失 --> E[35-40 dB]
+            </div>
+            <h3>橫向版本 (LR)</h3>
+            <div class="mermaid">
+                graph LR
+                A[空氣低阻抗] -- 進入 --> B[耳蝸高阻抗液]
+                B -- 物理屏障 --> C[阻抗不匹配]
+                C -- 造成損失 --> D[35-40 dB 能量]
+                E[中耳] -- 解決方案 --> C
+            </div>
+        </section>
+
+        <!-- 關卡 6 -->
+        <section id="lv6">
+            <h2>關卡 6：中耳增壓機制</h2>
+            <h3>縱向版本 (TD)</h3>
+            <div class="mermaid">
+                graph TD
+                A[中耳] -- 三大機制 --> B[放大 44 倍]
+                A -- 1 --> D[面積比 17:1]
+                A -- 2 --> E[耳膜彎曲 2:1]
+                A -- 3 --> F[槓桿原理 1.3:1]
+            </div>
+            <h3>橫向版本 (LR)</h3>
+            <div class="mermaid">
+                graph LR
+                A[中耳系統] -- 機制 1 --> B["面積比 (Hydraulic Action)<br/>耳膜 55mm2 : 鐙骨 3.2mm2"]
+                B -- 產生 --> B1["17 倍壓力放大<br/>(約 25 dB 增益)"]
+                
+                A -- 機制 2 --> C["耳膜彎曲 (Curved-membrane)<br/>錐形結構位移轉力量"]
+                C -- 產生 --> C1["2 倍壓力放大<br/>(約 6 dB 增益)"]
+                
+                A -- 機制 3 --> D["槓桿原理 (Ossicular Lever)<br/>鎚骨 9mm : 砧骨 7mm"]
+                D -- 產生 --> D1["1.3 倍壓力放大<br/>(約 2.2 dB 增益)"]
+                
+                B1 & C1 & D1 -- 綜合乘積 --> E["總計放大約 44 倍<br/>(補回 33-35 dB 損失)"]
+            </div>
+        </section>
+
+        <!-- 關卡 7 -->
+        <section id="lv7">
+            <h2>關卡 7：中耳反應特性（濾波功能）</h2>
+            <h3>縱向版本 (TD)</h3>
+            <div class="mermaid">
+                graph TD
+                A[中耳系統] -- 運作如 --> B[帶通濾波器]
+                B -- 強化 --> C[中頻 1000-1500 Hz]
+                C -- 決定 --> D[聽敏度曲線]
+            </div>
+            <h3>橫向版本 (LR)</h3>
+            <div class="mermaid">
+
+                graph LR
+                A[中耳系統] -- 運作如同 --> B["帶通濾波器<br/>(Band-pass)"]
+                B -- 選擇性放大 --> C["中頻 1k-1.5kHz<br/>能量"]
+                C -- 決定了 --> D["聽力最敏銳的<br/>區段"]
+                D -- 呈現於 --> E["最小可聽度<br/>曲線"]
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 聽覺科學冒險 - 知識地圖系統</p>
+    </footer>
+
+</body>
+
+</html>

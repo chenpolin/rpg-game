@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聽力學知識點 - T2</title>
+    <!-- Google Fonts: Inter & Noto Sans TC -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- MathJax for LaTeX support -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Mermaid.js for diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#d9f99d',
+                primaryTextColor: '#1e293b',
+                primaryBorderColor: '#65a30d',
+                lineColor: '#64748b',
+                secondaryColor: '#f1f5f9',
+                tertiaryColor: '#f1f5f9'
+            }
+        });
+    </script>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #f43f5e;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            line-height: 1.8;
+            letter-spacing: 0.05rem;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 830px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.5rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(8px);
+            box-shadow: var(--shadow);
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.25rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .tab-btn.active {
+            color: white;
+            background: var(--primary);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+            animation: slideUp 0.5s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            max-width: 830px;
+            margin: auto;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+        }
+
+        h3::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: #475569;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-light);
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1.5rem 0;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            background-color: white;
+            padding: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f8fafc;
+        }
+
+        .math-block {
+            background: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-family: 'Inter', serif;
+            border: 1px dashed var(--primary-light);
+        }
+
+        .concept-map {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-top: 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .concept-map h4 {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .concept-map h4::before {
+            content: "📊";
+            margin-right: 8px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #cbd5e1, transparent);
+            margin: 3rem 0;
+        }
+
+        strong {
+            color: #1e293b;
+            font-weight: 700;
+            background: linear-gradient(120deg, rgba(255, 255, 0, 0.4) 0%, rgba(255, 255, 0, 0.4) 100%);
+            padding: 0.1em 0.2em;
+            border-radius: 0.2em;
+        }
+
+        .quiz-container {
+            background: rgba(248, 250, 252, 0.8);
+            border: 2px solid var(--primary-light);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .quiz-container h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .quiz-container h4::before {
+            content: "📝";
+            margin-right: 8px;
+        }
+
+        .quiz-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .quiz-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .question {
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .options {
+            display: grid;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .option {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .answer-btn {
+            background: var(--primary-light);
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.4rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-top: 0.75rem;
+            transition: opacity 0.2s;
+        }
+
+        .answer-btn:hover {
+            opacity: 0.9;
+        }
+
+        .answer-content {
+            display: none;
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: #f1f5f9;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            color: #475569;
+            border-left: 4px solid var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>聽力學知識點 - 外耳與中耳</h1>
+            <p style="color: var(--text-muted);">系統化學習聽覺生理構造與量化機制</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn" onclick="openTab(event, 'L1')">L1. 聲學路徑</button>
+            <button class="tab-btn" onclick="openTab(event, 'L2')">L2. 耳殼效應</button>
+            <button class="tab-btn" onclick="openTab(event, 'L3')">L3. 耳道與HRTF</button>
+            <button class="tab-btn" onclick="openTab(event, 'L4')">L4. 外耳增益</button>
+            <button class="tab-btn" onclick="openTab(event, 'L5')">L5. 阻抗匹配</button>
+            <button class="tab-btn" onclick="openTab(event, 'L6')">L6. 放大機制</button>
+            <button class="tab-btn active" onclick="openTab(event, 'L7')">L7. 增益計算</button>
+        </nav>
+
+        <!-- L1 Content -->
+        <div id="L1" class="tab-content">
+            <h2>L1. 聲學路徑與空間定位</h2>
+            <p>聲音從聲源傳遞到鼓膜的過程中，並非原音重現，而是經過了一系列由人體生理構造產生的聲學濾波。</p>
+
+            <h3>1. 解剖構造對聲訊的影響</h3>
+            <p>聲音抵達耳道前，會受到以下物理現象的修飾：</p>
+            <ul>
+                <li><strong>頭影效應 (Head Shadow Effect)</strong>：對於頻率 >1500 Hz
+                    的聲音至關重要。由於高頻聲波的波長短於頭部直徑，聲波會被頭部阻擋，導致遠側耳接收到的音量顯著衰減。</li>
+                <li><strong>反射與繞射</strong>：進入耳道的聲音會與頭部、耳殼（Pinna）及軀幹互動。耳殼複雜的構造負責收集聲波並產生特定的共振與反射，這是我們辨別聲音來源的重要線索。</li>
+            </ul>
+
+            <h3>2. 空間定位的座標系統</h3>
+            <p>為了精確描述聲源位置，聽力學使用方位角與仰角雙軸系統：</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>座標維度</th>
+                        <th>描述方向</th>
+                        <th>關鍵角度定義</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>方位角 (Azimuth)</td>
+                        <td>水平平面</td>
+                        <td>0° 正前方；90° 右側；180° 正後方</td>
+                    </tr>
+                    <tr>
+                        <td>仰角 (Elevation)</td>
+                        <td>垂直平面</td>
+                        <td>0° 正前方；90° 正上方；180° 正後方</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="quiz-container">
+                <h4>知識自我檢測</h4>
+                <div class="quiz-item">
+                    <div class="question">1. 下列有關頭影效應 (Head Shadow Effect) 的敘述，何者正確？</div>
+                    <div class="options">
+                        <div class="option">(A) 對於低頻聲音 (< 500 Hz) 特別顯著</div>
+                        <div class="option">(B) 對於高頻聲音 (> 1500 Hz) 最為關鍵</div>
+                        <div class="option">(C) 是由耳殼的形狀所產生的物理現象</div>
+                        <div class="option">(D) 會導致近耳端接收到的音量顯著下降</div>
+                    </div>
+                    <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                    <div class="answer-content">
+                        <strong>答案：(B)</strong><br>
+                        解釋：頭部直徑大於高頻聲波的波長，會阻擋聲波，導致遠側耳接收到的音量衰減。
+                    </div>
+                </div>
+                <div class="quiz-item">
+                    <div class="question">2. 在聽力學的座標系統中，方位角 (Azimuth) 0° 與 90° 分別代表什麼方向？</div>
+                    <div class="options">
+                        <div class="option">(A) 正前方；正後方</div>
+                        <div class="option">(B) 正後方；正前方</div>
+                        <div class="option">(C) 正前方；右側</div>
+                        <div class="option">(D) 左側；右側</div>
+                    </div>
+                    <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                    <div class="answer-content">
+                        <strong>答案：(C)</strong><br>
+                        解釋：方位角 0° 定義為正前方，90° 定義為受測者的右側方向。
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-map">
+                <h4>L1 核心概念圖</h4>
+                <div class="mermaid">
+                    graph LR
+                    A[聲音從聲源傳遞至鼓膜] -- 過程特徵 --> B[非原音重現: 經過聲學濾波]
+
+                    B -- 1. 解剖構造影響 --> C[物理現象修飾]
+                    B -- 2. 空間定位系統 --> D[雙軸座標系統]
+
+                    C -- 例如 --> C1[頭影效應: <br>高頻 > 1500Hz 顯著衰減]
+                    C -- 例如 --> C2[反射與繞射: <br>與耳殼/軀幹互動產生線索]
+
+                    D -- 水平維度 --> D1[方位角 <br>Azimuth]
+                    D -- 垂直維度 --> D2[仰角 <br>Elevation]
+
+                    D1 -- 定義 --> D1a[0°正前方<br>90°右側<br>180°正後方]
+                    D2 -- 定義 --> D2a[0°正前方<br>90°正上方<br>180°正後方]
+
+                    style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style B fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style C fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style D fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style D1 fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style D2 fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style C1 fill:#fef08a,stroke:#eab308
+                    style C2 fill:#fef08a,stroke:#eab308
+                    style D1a fill:#fef08a,stroke:#eab308
+                    style D2a fill:#fef08a,stroke:#eab308
+                </div>
+            </div>
+        </div>
+
+        <!-- L2 Content -->
+        <div id="L2" class="tab-content">
+            <h2>L2. 耳殼效應與頻譜提示</h2>
+            <p>除了雙耳的時間與音量差異，耳殼本身是處理空間資訊的高級濾波器，尤其在處理高頻訊號與單耳定位中扮演關鍵角色。</p>
+
+            <h3>1. 耳殼的濾波功能</h3>
+            <p>耳殼擁有的凹陷（Concha）與隆起（Helix）構造，會對聲波產生複雜的反射與干涉。</p>
+            <ul>
+                <li><strong>高頻過濾</strong>：當聲源位置改變，耳殼會針對 4,000 Hz 以上的高頻訊號進行特定的增益或衰減。</li>
+                <li><strong>方向依賴性</strong>：這種濾波方式會隨聲音進入的角度而改變，大腦藉此解析出聲源的精確座標。</li>
+            </ul>
+
+            <h3>2. 頻譜變化 (Spectral Variations)</h3>
+            <p>聲音抵達耳道前產生的頻譜特徵變化，是我們判別聲源位於「前方、後方」或「上方、下方」的重要方向提示（Directional Cues）。</p>
+
+            <h3>3. 單耳定位 (Monaural Localization)</h3>
+            <p>在僅能使用一隻耳朵聆聽的情況下（例如單側聽損或環境干擾），雙耳的時間差資訊失效，此時耳殼效應成為定位聲源位置最核心的依賴機制。</p>
+
+            <div class="quiz-container">
+                <h4>知識自我檢測</h4>
+                <div class="quiz-item">
+                    <div class="question">1. 耳殼效應 (Pinna Effect) 對於辨認下列哪種方向的聲音最為核心？</div>
+                    <div class="options">
+                        <div class="option">(A) 左右方位辨識</div>
+                        <div class="option">(B) 聲音距離判斷</div>
+                        <div class="option">(C) 前後與上下方向辨識</div>
+                        <div class="option">(D) 聲音響度的快慢感</div>
+                    </div>
+                    <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                    <div class="answer-content">
+                        <strong>答案：(C)</strong><br>
+                        解釋：耳殼產生的頻譜提示（Spectral Variations）是判別聲源位於「前方、後方」或「上方、下方」的重要方向提示。
+                    </div>
+                </div>
+                <div class="quiz-item">
+                    <div class="question">2. 在「單耳定位」失效的情況下，雙耳定位（如時間差）失效，我們主要依賴什麼機制？</div>
+                    <div class="options">
+                        <div class="option">(A) 阻抗匹配</div>
+                        <div class="option">(B) 耳殼效應產生的頻譜提示</div>
+                        <div class="option">(C) 聽小骨槓桿</div>
+                        <div class="option">(D) 耳道第一共振峰</div>
+                    </div>
+                    <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                    <div class="answer-content">
+                        <strong>答案：(B)</strong><br>
+                        解釋：當單側聽損或僅能使用一隻耳朵時，雙耳時間差失效，此時耳殼效應成為定位聲源最核心的依賴機制。
+                    </div>
+                </div>
+                <div class="quiz-item">
+                    <div class="question">3. 耳殼通常針對哪個頻率以上的訊號進行特定的增益或衰減？</div>
+                    <div class="options">
+                        <div class="option">(A) 500 Hz</div>
+                        <div class="option">(B) 1,500 Hz</div>
+                        <div class="option">(C) 4,000 Hz</div>
+                        <div class="option">(D) 10,000 Hz</div>
+                    </div>
+                    <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                    <div class="answer-content">
+                        <strong>答案：(C)</strong><br>
+                        解釋：耳殼會針對 4,000 Hz 以上的高頻訊號進行特定的頻譜增益或衰減。
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-map">
+                <h4>L2 核心概念圖</h4>
+                <div class="mermaid">
+                    graph LR
+                    A[耳殼構造<br>耳甲腔/耳輪] -- 引發濾波 --> B[高頻濾波 > 4000Hz]
+
+                    B -- 產生 --> C[頻譜特徵變化<br>Spectral Variations]
+
+                    C -- 提供 --> D[方向提示: 前後與上下]
+                    C -- 應用於 --> E[單耳定位: 補足雙耳時差失效]
+
+                    style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style B fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style C fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style D fill:#fef08a,stroke:#eab308
+                    style E fill:#fef08a,stroke:#eab308
+                </div>
+            </div>
+        </div>
+
+        <!-- L3 Content -->
+        <div id="L3" class="tab-content">
+            <h2>L3. 耳道共振與頭部相關轉換函數 (HRTF)</h2>
+            <p>當聲音由外部空間傳遞至鼓膜（耳膜）時，外耳道的構造不僅僅是導管，更是一個精密的聲學放大器。</p>
+
+            <h3>1. 耳道的聲學模型：一端封閉的共振管</h3>
+            <p>在物理聲學中，外耳道可被視為一個「一端開放、一端封閉」的管狀諧振器（Quarter-wavelength Resonator）。開放端位於耳甲腔（Concha），封閉端則為鼓膜。</p>
+
+            <h3>共振頻率的計算</h3>
+            <p>聲音在管狀空間中的共振頻率 \(f\) 取決於聲速 \(c\) 與管長 \(L\)。在攝氏 20°C 的環境下，聲速計算如下：</p>
+            <div class="math-block">
+                \[c = 331 + 0.6 \times 20 = 343 \text{ m/s}\]
+            </div>
+            <p>若成人耳道平均長度 \(L\) 為 2.3 cm（0.023 m），其基本共振頻率 (第一共振峰) 發生在波長為管長 4 倍處 (\(4L = 9.2 \text{ cm}\)):</p>
+            <div class="math-block">
+                \[f = \frac{c}{4L} = \frac{343}{4 \times 0.023} = 3728 \text{ Hz} \text{ (約 3800 Hz)}\]
+            </div>
+
+            <h3>2. 頭部相關轉換函數 (HRTF)</h3>
+            <p>頭部相關轉換函數（Head-Related Transfer Function, HRTF）是描述聲訊號如何從空間中的聲源（如喇叭），經過頭部、軀幹、耳殼與耳道，最終抵達鼓膜的頻率響應變化。</p>
+
+            <h3>經典研究分析</h3>
+            <ul>
+                <li><strong>寬廣的共振峰</strong>：在 2,000 至 5,000 Hz 之間存在一個顯著的增益區間。這主要是由耳道的共振特性所貢獻。</li>
+                <li><strong>聲壓增益</strong>：透過耳道的共振，鼓膜處接收到的音量相較於自由場中的原始音量，可提高約 15 dB。</li>
+            </ul>
+
+            <h3>3. 生理構造的複雜性與個體差異</h3>
+
+            <ul>
+                <li><strong>阻尼效應 (Damping)</strong>：耳道並非理想的堅硬管壁，且末端的鼓膜具有吸收性與彈性。</li>
+                <li><strong>解剖變異性</strong>：不同個體的耳道形狀存在巨大差異。在 10,000 Hz 以上的極高頻區段，個體間的差異甚至會超過 20 dB。</li>
+            </ul>
+            <div class="image-container">
+                <img src="CM_2026-03-11/L3.png" alt="耳道共振與阻尼效應"
+                    style="width: 100%; height: auto; border-radius: 8px; margin: 10px 0;">
+            </div>
+            <div class="quiz-container">
+                <h4>知識自我檢測</h4>
+                <div class="quiz-item">
+                    <div class="question">1. 外耳道可被視為一端開放、一端封閉的「1/4 波長共振管」，其第一共振峰頻率大約落在？</div>
+                    <div class="options">
+                        <div class="option">(A) 1,000 Hz</div>
+                        <div class="option">(B) 2,500 Hz</div>
+                        <div class="option">(C) 3,800 Hz</div>
+                        <div class="option">(D) 8,000 Hz</div>
+                    </div>
+                    <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                    <div class="answer-content">
+                        <strong>答案：(C)</strong><br>
+                        解釋：根據 f = c / 4L，以成人耳道長度 2.3 cm 計算，共振頻率約為 3728 Hz（約 3800 Hz）。
+                    </div>
+                </div>
+                <div class="quiz-item">
+                    <div class="question">2. 透過 HRTF 與耳道共振，鼓膜處接收到的音量相較於自由場原始音量，大約能提高多少？</div>
+                    <div class="options">
+                        <div class="option">(A) 5 dB</div>
+                        <div class="option">(B) 15 dB</div>
+                        <div class="option">(C) 30 dB</div>
+                        <div class="option">(D) 40 dB</div>
+                    </div>
+                    <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                    <div class="answer-content">
+                        <strong>答案：(B)</strong><br>
+                        解釋：透過外耳道與耳殼的共振（HRTF 特性），鼓膜處的音量平均可提高約 15 dB。
+                    </div>
+                </div>
+                <div class="quiz-item">
+                    <div class="question">3. 耳道壁的「阻尼效應 (Damping)」對共振峰有什麼影響？</div>
+                    <div class="options">
+                        <div class="option">(A) 使共振峰頻率升高</div>
+                        <div class="option">(B) 使共振峰頻率降低</div>
+                        <div class="option">(C) 使共振峰變窄</div>
+                        <div class="option">(D) 使共振峰變寬</div>
+                    </div>
+                    <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                    <div class="answer-content">
+                        <strong>答案：(D)</strong><br>
+                        解釋：耳道並非理想硬管，其彈性與末端鼓膜的吸收性會產生阻尼效應，使共振曲線的峰值區域變寬。
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-map">
+                <h4>L3 核心概念圖</h4>
+                <div class="mermaid">
+                    graph LR
+                    A0[耳道] -- 具備 --> A[1/4 波長共振管模型]
+                    A -- 物理特性 --> B[自然共振頻率<br>3000-4000 Hz]
+                    B -- 結合 --> C[HRTF<br>個人化轉換函數]
+                    C -- 結果 --> D[聲壓增益<br>鼓膜處提升 15dB]
+
+                    A0 -- 包含 --> F1[耳道壁]
+                    F1 -- 產生 --> F2[阻尼效應]
+                    F2 -- 使得 --> F3[共振峰變寬]
+                    F3 -- 共同控制 --> D
+
+                    style A0 fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style B fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style C fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style D fill:#fef08a,stroke:#eab308
+                    style F1 fill:#bae6fd,stroke:#0284c7
+                    style F2 fill:#bae6fd,stroke:#0284c7
+                    style F3 fill:#bae6fd,stroke:#0284c7
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- L4 Content -->
+    <div id="L4" class="tab-content">
+        <h2>L4. 外耳結構的分段增益與方位依賴性</h2>
+        <p>外耳對聲音的修飾並非由單一構造完成，而是透過耳甲腔與耳道的串聯共振，形成一個寬廣且高效的增益區間。</p>
+
+        <h3>1. 外耳結構的複合共振</h3>
+
+        <ul>
+            <li><strong>耳甲腔共振</strong>：碗狀的耳甲腔構造會產生約 5 kHz 的共振峰值。</li>
+            <li><strong>耳道共振</strong>：平均長度約 2.5 cm 的耳道，其第一共振峰值約落在 2.5 kHz。</li>
+            <li><strong>綜合效果</strong>：在 1.5 kHz 至 7 kHz 的寬廣頻譜內，能提供 10 到 15 dB 的自然增益。</li>
+        </ul>
+
+        <h3>2. HRTF 的方位依賴性</h3>
+        <ul>
+            <li><strong>近耳與遠耳</strong>：當聲源偏向一側時，兩耳的增益曲線會出現顯著差異。</li>
+            <li><strong>曲線細節</strong>：即使在共振區域，由於頭影效應與耳殼繞射，兩條曲線在 5 kHz 以上的精細形狀有所不同。</li>
+        </ul>
+        <div class="image-container">
+            <img src="CM_2026-03-11/L4.png" alt="外耳複合共振增益"
+                style="width: 100%; height: auto; border-radius: 8px; margin: 10px 0;">
+        </div>
+        <div class="quiz-container">
+            <h4>知識自我檢測</h4>
+            <div class="quiz-item">
+                <div class="question">1. 外耳結構（耳甲腔與耳道）串聯共振後，會形成一個多寬的增益區間？</div>
+                <div class="options">
+                    <div class="option">(A) 500 - 1000 Hz</div>
+                    <div class="option">(B) 1,500 - 7,000 Hz</div>
+                    <div class="option">(C) 8,000 - 12,000 Hz</div>
+                    <div class="option">(D) 20 - 20,000 Hz</div>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                <div class="answer-content">
+                    <strong>答案：(B)</strong><br>
+                    解釋：耳甲腔（約 5 kHz）與耳道（約 2.5 kHz）的複合共振，在 1.5 kHz 到 7 kHz 之間提供顯著增益。
+                </div>
+            </div>
+            <div class="quiz-item">
+                <div class="question">2. 當聲源偏離中心位置（方位角不為 0°），兩耳的 HRTF 曲線會如何？</div>
+                <div class="options">
+                    <div class="option">(A) 完全相同，沒有差異</div>
+                    <div class="option">(B) 會產生不同的頻譜凹陷與峰值</div>
+                    <div class="option">(C) 只有低頻部分會不同</div>
+                    <div class="option">(D) 總增益量會自動相互消失</div>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                <div class="answer-content">
+                    <strong>答案：(B)</strong><br>
+                    解釋：由於方位依賴性與頭影效應，近耳與遠耳接收到的訊號在 5 kHz 以上的精細形狀會有明顯不同。
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-map">
+            <h4>L4 核心概念圖</h4>
+            <div class="mermaid">
+                graph LR
+                A[耳甲腔 + 耳道] -- 串聯共振 --> B[1.5-7 kHz 寬帶增益]
+                B -- 受控於 --> C[方位依賴性<br>近耳與遠耳差異]
+                C -- 形塑 --> D[HRTF 頻譜特徵<br>5kHz 以上凹陷/峰值]
+                D -- 空間定位 --> E[精確空間定位依據]
+
+                style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                style B fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                style C fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                style D fill:#fef08a,stroke:#eab308
+                style E fill:#fef08a,stroke:#eab308
+            </div>
+        </div>
+    </div>
+
+    <!-- L5 Content -->
+    <div id="L5" class="tab-content">
+        <h2>L5. 中耳的阻抗匹配機制 (Impedance Matching)</h2>
+        <p>聲音必須從外耳的空氣介質進入內耳耳蝸內的液體介質。這兩種介質對聲能傳導的抵抗力（聲阻抗）存在巨大差異。</p>
+
+        <h3>1. 阻抗不匹配 (Impedance Mismatch)</h3>
+        <ul>
+            <li><strong>阻抗比</strong>：耳蝸液與空氣的阻抗比約為 4000：1。</li>
+            <li><strong>能量反射</strong>：若無中耳介入，約 99.9% 的聲能會被反射。</li>
+            <li><strong>分貝損失</strong>：這種損失高達 30 至 40 dB。</li>
+        </ul>
+
+        <h3>2. 中耳：壓力變壓器 (Pressure Transformer)</h3>
+        <p>中耳系統透過以下三種生物力學機制提高聲壓：</p>
+        <ol>
+            <li><strong>面積比效應 (Area Ratio Effect)</strong></li>
+            <li><strong>聽小骨槓桿原理 (Ossicular Lever Action)</strong></li>
+            <li><strong>耳膜彎曲機制 (Curved-Membrane Mechanism)</strong></li>
+        </ol>
+
+        <div class="quiz-container">
+            <h4>知識自我檢測</h4>
+            <div class="quiz-item">
+                <div class="question">1. 若無中耳系統的阻抗匹配機制，聲音從空氣傳入耳蝸液體時，能量損失約為多少？</div>
+                <div class="options">
+                    <div class="option">(A) 5 - 10 dB</div>
+                    <div class="option">(B) 10 - 20 dB</div>
+                    <div class="option">(C) 30 - 40 dB</div>
+                    <div class="option">(D) 60 - 80 dB</div>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                <div class="answer-content">
+                    <strong>答案：(C)</strong><br>
+                    解釋：空氣與液體阻抗差異極大 (4000:1)，若無中耳補償，損失高達 30-40 dB。
+                </div>
+            </div>
+            <div class="quiz-item">
+                <div class="question">2. 中耳這套系統，在物理功能上可以被稱為？</div>
+                <div class="options">
+                    <div class="option">(A) 速度加速器</div>
+                    <div class="option">(B) 電壓調製器</div>
+                    <div class="option">(C) 壓力變壓器 (Pressure Transformer)</div>
+                    <div class="option">(D) 頻率選擇器</div>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                <div class="answer-content">
+                    <strong>答案：(C)</strong><br>
+                    解釋：中耳的主要任務是透過增加壓力的生物力學機制，來補償因傳遞介質不同造成的聲能反射損失。
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-map">
+            <h4>L5 核心概念圖</h4>
+            <div class="mermaid">
+                graph LR
+                A[聲波介質轉換<br>空氣 -> 液體] -- 導致 --> B[阻抗不匹配<br>損失 30-40 dB]
+                B -- 解決方案 --> C[中耳系統<br>壓力變壓器]
+                C -- 透過面積比/槓桿/耳膜彎曲 --> D[提升聲壓<br>達成阻抗匹配]
+
+
+                style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                style B fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                style C fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                style D fill:#fef08a,stroke:#eab308
+            </div>
+        </div>
+    </div>
+
+    <!-- L6 Content -->
+    <div id="L6" class="tab-content">
+        <h2>L6. 中耳壓力的三大放大機制</h2>
+        <p>中耳的主要功能是將空氣中的聲能傳導至耳蝸液。為了克服液體的高阻抗，中耳系統透過「增加壓力」來彌補能量損失。壓力（Pressure, P）的物理定義為單位面積（Area, A）上的垂直作用力（Force, F）：</p>
+        <div class="math-block">
+            \[P = \frac{F}{A}\]
+        </div>
+
+        <p>以下詳細解析實現壓力放大的三大生物力學機制：</p>
+
+        <h3>1. 面積比效應 (Area Ratio Effect)</h3>
+
+        <p>這是中耳增益中貢獻最大的一環。其原理在於將耳膜（TM）接收到的總力量，集中作用於面積較小的卵圓窗（Oval Window）上。</p>
+        <ul>
+            <li><strong>解剖數據：</strong>
+                <ul>
+                    <li>耳膜的有效振動面積在不同研究中略有差異，約在 <strong>55 mm² 至 85 mm²</strong> 之間（常見取值如 <strong>64.3 mm²</strong>）。
+                    </li>
+                    <li>卵圓窗（或稱其上的鐙骨足板）面積約為 <strong>3.2 mm²</strong>。</li>
+                </ul>
+            </li>
+            <li><strong>壓力放大倍率：</strong>
+                <p>若以 \(64.3 / 3.2\) 計算，面積比約為 <strong>20.1：1</strong>。這意味著在作用力不變的情況下，僅靠面積縮小，卵圓窗處的壓力就提升了約 20 倍。</p>
+            </li>
+        </ul>
+        <div class="image-container">
+            <img src="CM_2026-03-11/L6-1.png" alt="面積比效應"
+                style="width: 100%; height: auto; border-radius: 8px; margin: 10px 0;">
+        </div>
+        <h3>2. 耳膜彎曲機制 (Curved-Membrane Mechanism)</h3>
+
+        <p>耳膜並非平坦的膜，而是呈現圓錐形且邊緣固定於環帶（Annulus）。</p>
+        <ul>
+            <li><strong>力學原理：</strong> 由於耳膜的幾何形狀，當它隨聲波震動時會產生彎曲。這種彎曲使得耳膜邊緣位移大，而連接錘骨柄（Manubrium）的部分位移相對較小。</li>
+            <li><strong>槓桿效應：</strong> 根據能量守恆（\(F_1 D_1 = F_2 D_2\)），位移縮小的地方會產生更大的力。在貓的實驗數據中觀察到，此機制能使作用於錘骨的力增加約 2 倍。
+            </li>
+        </ul>
+        <div class="image-container">
+            <img src="CM_2026-03-11/L6-2.png" alt="耳膜彎曲機制"
+                style="width: 100%; height: auto; border-radius: 8px; margin: 10px 0;">
+        </div>
+        <h3>3. 聽小骨鍊的槓桿原理 (Ossicular Lever)</h3>
+
+        <p>錘骨（Malleus）與砧骨（Incus）形成了一個以關節為支點的槓桿系統。</p>
+        <ul>
+            <li><strong>結構特點：</strong> 錘骨柄較長（長臂），而砧骨長突較短（短臂）。</li>
+            <li><strong>槓桿比：</strong> 人類的聽小骨槓桿比約為 1.3：1。</li>
+            <li><strong>力學結果：</strong> 根據槓桿原理，施加在較短臂（砧骨尖端/連結鐙骨處）的力會隨之增大。</li>
+        </ul>
+        <div class="image-container">
+            <img src="CM_2026-03-11/L6-3.png" alt="聽小骨槓桿原理"
+                style="width: 100%; height: auto; border-radius: 8px; margin: 10px 0;">
+        </div>
+        <div class="quiz-container">
+            <h4>知識自我檢測</h4>
+            <div class="quiz-item">
+                <div class="question">1. 在中耳三大放大機制中，貢獻「增益倍率」最高的一項是？</div>
+                <div class="options">
+                    <div class="option">(A) 聽小骨槓桿原理 (Lever Action)</div>
+                    <div class="option">(B) 耳膜彎曲機制 (Curved-Membrane Mechanism)</div>
+                    <div class="option">(C) 面積比效應 (Area Ratio Effect)</div>
+                    <div class="option">(D) 能量守恆定律</div>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                <div class="answer-content">
+                    <strong>答案：(C)</strong><br>
+                    解釋：面積比效應（約 20.1:1）貢獻最大，將耳膜的震動力量集中在較小的卵圓窗。
+                </div>
+            </div>
+            <div class="quiz-item">
+                <div class="question">2. 人類的聽小骨槓桿比 (Malleus/Incus) 約為多少？</div>
+                <div class="options">
+                    <div class="option">(A) 1.0 : 1</div>
+                    <div class="option">(B) 1.3 : 1</div>
+                    <div class="option">(C) 2.0 : 1</div>
+                    <div class="option">(D) 20 : 1</div>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                <div class="answer-content">
+                    <strong>答案：(B)</strong><br>
+                    解釋：錘骨柄與砧骨長突形成的槓桿系統，比例約為 1.3:1。
+                </div>
+            </div>
+            <div class="quiz-item">
+                <div class="question">3. 耳膜彎曲機制 (Curved-Membrane Mechanism) 的力學結果為何？</div>
+                <div class="options">
+                    <div class="option">(A) 使音頻過濾掉低頻</div>
+                    <div class="option">(B) 使作用於錘骨的力增加約 2 倍</div>
+                    <div class="option">(C) 使耳膜更容易破裂</div>
+                    <div class="option">(D) 將能量消耗掉</div>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                <div class="answer-content">
+                    <strong>答案：(B)</strong><br>
+                    解釋：耳膜的幾何形狀（位移小力則大）能提供約 2 倍的力的增益。
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-map">
+            <h4>L6 核心概念圖</h4>
+            <div class="mermaid">
+                graph LR
+                A[中耳放大機制] -- 1.面積比效應 --> B1[力量集中於<br>3.2mm² 卵圓窗]
+                B1 -- 壓力倍增 --> C1[20.1 : 1 增益]
+
+                A -- 2.耳膜彎曲 --> B2[能量守恆:<br>位移小則力大]
+                B2 -- 力矩強化 --> C2[2 倍增益]
+
+                A -- 3.聽小骨槓桿 --> B3[長短臂槓桿效應]
+                B3 -- 放大驅動力 --> C3[1.3 : 1 增益]
+
+                C1 & C2 & C3 -- 共同結果 --> D[補償聲能損失<br>30-40 dB]
+
+                style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                style C1 fill:#fef08a,stroke:#eab308
+                style C2 fill:#fef08a,stroke:#eab308
+                style C3 fill:#fef08a,stroke:#eab308
+                style D fill:#fef08a,stroke:#eab308,stroke-width:2px
+            </div>
+        </div>
+    </div>
+
+    <!-- L7 Content -->
+    <div id="L7" class="tab-content active">
+        <h2>L7. 中耳增益計算與頻譜特性</h2>
+
+        <h3>1. 中耳變壓比與增益總結</h3>
+        <p>綜合三大機制，總壓力放大倍率估算如下：</p>
+        <div class="math-block">
+            \[20.1 \times 2 \times 1.3 = 52.26\]
+        </div>
+        <p>轉換為分貝表示約為 <strong>34.32 dB SPL</strong>。此增益完美抵銷了聲音進入液體介質時的損失。</p>
+
+        <h3>2. 中耳的濾波功能與頻率響應</h3>
+        <p>中耳各組件對不同頻率的聲音具有特定的偏好（即濾波特性）：</p>
+        <ul>
+            <li><strong>耳膜</strong>：表現為帶通濾波器，物理特性上略微偏好高頻能量。</li>
+            <li><strong>聽小骨鍊</strong>：質量與硬度的平衡使其有利於中頻能量的傳導。</li>
+            <li><strong>中耳腔</strong>：包含鼓室、上鼓室及乳突氣室，這些空間提供的聲學共振頻率平均約在 <strong>800 Hz</strong>。</li>
+        </ul>
+
+        <h3>3. 最終結果：最小可聽度曲線 (MAC)</h3>
+        <p>中耳系統的阻抗匹配與濾波功能，最終在 <strong>1,000 至 2,500 Hz</strong> 之間提供最大的能量傳輸效率（增益約 <strong>30 dB</strong>）。</p>
+        <ul>
+            <li><strong>聽力敏銳度</strong>：由於中耳在此頻帶的共振效率最高，人類在該範圍內的聽力最為敏銳。</li>
+            <li><strong>最小可聽度曲線 (Minimum Audibility Curve)</strong>：臨床上觀察到的聽力閾值曲線呈現「<strong>U
+                    型</strong>」，其形狀很大程度取決於中耳的反應特性：在極高頻與極低頻處，能量傳導效率下降，導致聽力閾值升高。</li>
+        </ul>
+
+        <div class="image-container">
+            <img src="CM_2026-03-11/L7-1.png" alt="中耳增益總結"
+                style="width: 100%; height: auto; border-radius: 8px; margin: 10px 0;">
+        </div>
+
+        <div class="quiz-container">
+            <h4>知識自我檢測</h4>
+            <div class="quiz-item">
+                <div class="question">1. 綜合三大中耳放大機制，總壓力放大倍率估計約為？</div>
+                <div class="options">
+                    <div class="option">(A) 15 倍</div>
+                    <div class="option">(B) 30 倍</div>
+                    <div class="option">(C) 52 倍 (約 34 dB)</div>
+                    <div class="option">(D) 100 倍</div>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                <div class="answer-content">
+                    <strong>答案：(C)</strong><br>
+                    解釋：總倍率 = 20.1 (面積) × 2 (彎曲) × 1.3 (槓桿) ≈ 52.26 倍 (分貝值為 34.32 dB)。
+                </div>
+            </div>
+            <div class="quiz-item">
+                <div class="question">2. 「最小可聽度曲線 (MAC)」呈現 U 型狀，其聽力最敏銳的頻率區間（約 1,000 - 2,500 Hz）主要由什麼因素決定？</div>
+                <div class="options">
+                    <div class="option">(A) 耳內毛細胞的總數量</div>
+                    <div class="option">(B) 耳殼的高度</div>
+                    <div class="option">(C) 中耳系統的阻抗匹配與共振效率</div>
+                    <div class="option">(D) 聲源的方位角</div>
+                </div>
+                <button class="answer-btn" onclick="toggleAnswer(this)">顯示答案</button>
+                <div class="answer-content">
+                    <strong>答案：(C)</strong><br>
+                    解釋：中耳在 1000 - 2500 Hz 之間能量傳輸效率最高，決定人類在此頻帶聽覺最靈敏。
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-map">
+            <h4>L7 核心概念圖</h4>
+            <div class="mermaid">
+                graph LR
+                A[中耳綜合特性] -- 1.阻抗匹配 --> B1[增益約 30-34 dB]
+                A -- 2.濾波特性 --> B2[偏好中頻 1-2.5kHz]
+
+                B1 & B2 -- 共同決定 --> C[傳導效率峰值]
+                C -- 臨床表現 --> D[U 型 MAC 曲線]
+                D -- 結果 --> E[人類聽力最敏銳區間]
+
+                style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                style B1 fill:#fef08a,stroke:#eab308
+                style B2 fill:#fef08a,stroke:#eab308
+                style D fill:#fef08a,stroke:#eab308
+                style E fill:#fef08a,stroke:#eab308,stroke-width:2px
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 聽力學知識庫 - 項目 202</p>
+    </footer>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+
+            // 通知 MathJax 重繪公式 (如果有的話)
+            if (window.MathJax && window.MathJax.typeset) {
+                window.MathJax.typeset();
+            }
+        }
+
+        function toggleAnswer(btn) {
+            var content = btn.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                btn.textContent = "顯示答案";
+            } else {
+                content.style.display = "block";
+                btn.textContent = "隱藏答案";
+            }
+        }
+    </script>
+</body>
+
+</html>

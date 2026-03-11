@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聽力學核心概念圖庫 - T2_CM</title>
+    <!-- Google Fonts: Inter & Noto Sans TC -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- MathJax for LaTeX support -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Mermaid.js for diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#d9f99d',
+                primaryTextColor: '#1e293b',
+                primaryBorderColor: '#65a30d',
+                lineColor: '#64748b',
+                secondaryColor: '#f1f5f9',
+                tertiaryColor: '#f1f5f9',
+                fontSize: '20px'
+            }
+        });
+    </script>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #f43f5e;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            line-height: 1.8;
+            letter-spacing: 0.05rem;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 830px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            padding: 0.5rem;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 2rem;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .concept-map {
+            background: white;
+            padding: 0.5rem;
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .concept-map h4 {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            display: none;
+            align-items: center;
+        }
+
+        .concept-map h4::before {
+            content: "📊";
+            margin-right: 8px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-bottom: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>聽力學核心概念圖庫 - T2_CM</h1>
+            <p style="color: var(--text-muted);">L1 到 L7 核心邏輯總覽（單頁版）</p>
+        </header>
+
+        <!-- L1 Concept Map -->
+        <section class="section-card">
+            <h2>L1. 聲學路徑核心概念</h2>
+            <div class="concept-map">
+                <h4>L1 核心概念圖</h4>
+                <div class="mermaid">
+                    graph LR
+                    A[聲音從聲源<br>傳遞至鼓膜] -- 過程特徵 --> B[非原音重現:<br>經過聲學濾波]
+
+                    B -- 1. 解剖構造影響 --> C[物理現象修飾]
+                    B -- 2. 空間定位系統 --> D[雙軸座標系統]
+
+                    C -- 例如 --> C1[頭影效應: <br>高頻 > 1500Hz<br>顯著衰減]
+                    C -- 例如 --> C2[反射與繞射: <br>與耳殼/軀幹<br>互動產生線索]
+
+                    D -- 水平維度 --> D1[方位角 <br>Azimuth]
+                    D -- 垂直維度 --> D2[仰角 <br>Elevation]
+
+                    D1 -- 定義 --> D1a[0°正前方<br>90°右側<br>180°正後方]
+                    D2 -- 定義 --> D2a[0°正前方<br>90°正上方<br>180°正後方]
+
+                    style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style B fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style C fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style D fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style D1 fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style D2 fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style C1 fill:#fef08a,stroke:#eab308
+                    style C2 fill:#fef08a,stroke:#eab308
+                    style D1a fill:#fef08a,stroke:#eab308
+                    style D2a fill:#fef08a,stroke:#eab308
+                </div>
+            </div>
+        </section>
+
+        <!-- L2 Concept Map -->
+        <section class="section-card">
+            <h2>L2. 耳殼效應核心概念</h2>
+            <div class="concept-map">
+                <h4>L2 核心概念圖</h4>
+                <div class="mermaid">
+                    graph LR
+                    A[耳殼構造<br>耳甲腔/耳輪] -- 引發濾波 --> B[高頻濾波<br>> 4000Hz]
+
+                    B -- 產生 --> C[頻譜特徵變化<br>Spectral Variations]
+
+                    C -- 提供 --> D[方向提示:<br>前後與上下]
+                    C -- 應用於 --> E[單耳定位:<br>補足雙耳時差失效]
+
+                    style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style B fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style C fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style D fill:#fef08a,stroke:#eab308
+                    style E fill:#fef08a,stroke:#eab308
+                </div>
+            </div>
+        </section>
+
+        <!-- L3 Concept Map -->
+        <section class="section-card">
+            <h2>L3. 耳道共振與HRTF核心概念</h2>
+            <div class="concept-map">
+                <h4>L3 核心概念圖</h4>
+                <div class="mermaid">
+                    graph LR
+                    A0[耳道] -- 具備 --> A[1/4 波長<br>共振管模型]
+                    A -- 物理特性 --> B[自然共振頻率<br>3000-4000 Hz]
+                    B -- 結合 --> C[HRTF<br>個人化轉換函數]
+                    C -- 結果 --> D[聲壓增益<br>鼓膜處提升 15dB]
+
+                    A0 -- 包含 --> F1[耳道壁]
+                    F1 -- 產生 --> F2[阻尼效應]
+                    F2 -- 使得 --> F3[共振峰變寬]
+                    F3 -- 共同控制 --> D
+
+                    style A0 fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style B fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style C fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style D fill:#fef08a,stroke:#eab308
+                    style F1 fill:#bae6fd,stroke:#0284c7
+                    style F2 fill:#bae6fd,stroke:#0284c7
+                    style F3 fill:#bae6fd,stroke:#0284c7
+                </div>
+            </div>
+        </section>
+
+        <!-- L4 Concept Map -->
+        <section class="section-card">
+            <h2>L4. 外耳複合增益核心概念</h2>
+            <div class="concept-map">
+                <h4>L4 核心概念圖</h4>
+                <div class="mermaid">
+                    graph LR
+                    A[耳甲腔 + 耳道] -- 串聯共振 --> B[1.5-7 kHz<br>寬帶增益]
+                    B -- 受控於 --> C[方位依賴性<br>近耳/遠耳差異]
+                    C -- 形塑 --> D[HRTF 頻譜特徵<br>5kHz以上凹陷/峰值]
+                    D -- 空間定位 --> E[精確空間<br>定位依據]
+
+                    style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style B fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style C fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style D fill:#fef08a,stroke:#eab308
+                    style E fill:#fef08a,stroke:#eab308
+                </div>
+            </div>
+        </section>
+
+        <!-- L5 Concept Map -->
+        <section class="section-card">
+            <h2>L5. 中耳阻抗匹配核心概念</h2>
+            <div class="concept-map">
+                <h4>L5 核心概念圖</h4>
+                <div class="mermaid">
+                    graph LR
+                    A[介質轉換:<br>空氣 -> 液體] -- 導致 --> B[阻抗不匹配<br>損失 30-40 dB]
+                    B -- 解決方案 --> C[中耳系統<br>壓力變壓器]
+                    C -- 透過面積比/槓桿/<br>耳膜彎曲 --> D[提升聲壓<br>達成阻抗匹配]
+
+
+                    style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style B fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style C fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style D fill:#fef08a,stroke:#eab308
+                </div>
+            </div>
+        </section>
+
+        <!-- L6 Concept Map -->
+        <section class="section-card">
+            <h2>L6. 中耳放大機制核心概念</h2>
+            <div class="concept-map">
+                <h4>L6 核心概念圖</h4>
+                <div class="mermaid">
+                    graph LR
+                    A[中耳放大機制] -- 1.面積比效應 --> B1[力量集中於<br>3.2mm² 卵圓窗]
+                    B1 -- 壓力倍增 --> C1[20.1 : 1 增益]
+
+                    A -- 2.耳膜彎曲 --> B2[能量守恆:<br>位移小則力大]
+                    B2 -- 力矩強化 --> C2[2 倍增益]
+
+                    A -- 3.聽小骨槓桿 --> B3[聽小骨鍊<br>槓桿效應]
+                    B3 -- 放大驅動力 --> C3[1.3 : 1 增益]
+
+                    C1 & C2 & C3 -- 共同結果 --> D[補償聲能損失<br>30-40 dB]
+
+                    style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style C1 fill:#fef08a,stroke:#eab308
+                    style C2 fill:#fef08a,stroke:#eab308
+                    style C3 fill:#fef08a,stroke:#eab308
+                    style D fill:#fef08a,stroke:#eab308,stroke-width:2px
+                </div>
+            </div>
+        </section>
+
+        <!-- L7 Concept Map -->
+        <section class="section-card">
+            <h2>L7. 中耳增益與MAC核心概念</h2>
+            <div class="concept-map">
+                <h4>L7 核心概念圖</h4>
+                <div class="mermaid">
+                    graph LR
+                    A[中耳綜合特性] -- 1.阻抗匹配 --> B1[增益約<br>30-34 dB]
+                    A -- 2.濾波特性 --> B2[偏好中頻<br>1-2.5kHz]
+
+                    B1 & B2 -- 共同決定 --> C[傳導效率峰值]
+                    C -- 臨床表現 --> D[U 型 MAC 曲線]
+                    D -- 結果 --> E[人類聽力<br>最敏銳區間]
+
+                    style A fill:#d9f99d,stroke:#65a30d,stroke-width:2px
+                    style B1 fill:#fef08a,stroke:#eab308
+                    style B2 fill:#fef08a,stroke:#eab308
+                    style D fill:#fef08a,stroke:#eab308
+                    style E fill:#fef08a,stroke:#eab308,stroke-width:2px
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 聽力學概念圖庫 - 項目 202</p>
+        </footer>
+    </div>
+</body>
+
+</html>

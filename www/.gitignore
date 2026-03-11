@@ -1,0 +1,14 @@
+# RPG Maker MV/MZ Default Ignores
+audio/
+img/
+movies/
+icon/
+
+# System Files
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+node_modules/
+.DS_Store

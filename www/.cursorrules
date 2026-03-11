@@ -1,0 +1,36 @@
+# RPG Maker 地圖 JSON 修改準則
+
+在處理 `data/*.json` 檔案（特別是地圖資料）時，請務必遵守以下規範：
+
+## 1. 忽略地圖基本設定
+不得修改以下關於地圖基本設定的欄位資料：
+- `autoplayBgm`
+- `autoplayBgs`
+- `battleback1Name`
+- `battleback2Name`
+- `bgm`
+- `bgs`
+- `disableDashing`
+- `displayName`
+- `encounterList`
+- `encounterStep`
+- `height`
+- `note`
+- `parallaxLoopX`
+- `parallaxLoopY`
+- `parallaxName`
+- `parallaxShow`
+- `parallaxSx`
+- `parallaxSy`
+- `scrollType`
+- `specifyBattleback`
+- `tilesetId`
+- `width`
+- `data` (圖塊資料)
+
+## 2. 修改重點
+- 所有的修改應集中在 `events` 欄位內的活動事件內容。
+- **對話字數限制**：在 `code: 401` 的 `parameters` 中，每行文字長度**不得超過 20 個中文字**（包含標點符號與控制碼所佔空間）。
+
+---
+*此規則已由使用者確認，請嚴格執行。*
